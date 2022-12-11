@@ -11,7 +11,14 @@ def decision_step(Rover):
     :param Rover: Rover class object that stores all Rover state parameters
     :return: Rover class object with updated state parameters
     """
-    
+    if Rover.samples_found == 6:
+        print('RETURNING HOME')
+        if abs(Rover.pos[0] - Rover.start_pos[0]) < 20 and abs(Rover.pos[1] - Rover.start_pos[1]) < 20:
+            Rover.throttle = 0
+            Rover.brake = Rover.brake_set
+            Rover.steer = 0
+            print('RETURNED HOME!!!! BEAM ME UP!!!')
+            return Rover
 
 
     # Rover is stuck so try to get unstuck
